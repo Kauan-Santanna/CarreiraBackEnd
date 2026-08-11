@@ -1,46 +1,49 @@
 import os
+from termcolor import colored
 
 restaurantes = []
 
 def exibir_nome_do_programa():
-    print("""
+    print(colored("""
  ██████╗ █████╗ ██████╗  █████╗ ██████╗   ███████╗██╗  ██╗██████╗ ██████╗ ███████╗ ██████╗ ██████╗
 ██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗  ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
 ╚█████╗ ███████║██████╦╝██║  ██║██████╔╝  █████╗   ╚███╔╝ ██████╔╝██████╔╝█████╗  ╚█████╗ ╚█████╗ 
  ╚═══██╗██╔══██║██╔══██╗██║  ██║██╔══██╗  ██╔══╝   ██╔██╗ ██╔═══╝ ██╔══██╗██╔══╝   ╚═══██╗ ╚═══██╗
 ██████╔╝██║  ██║██████╦╝╚█████╔╝██║  ██║  ███████╗██╔╝╚██╗██║     ██║  ██║███████╗██████╔╝██████╔╝
 ╚═════╝ ╚═╝  ╚═╝╚═════╝  ╚════╝ ╚═╝  ╚═╝  ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝╚═════╝ ╚═════╝ 
-""")
+""", "cyan"))
 
 def exibir_opcoes():
-    print("1. Cadastrar restaurante")
-    print("2. Listar restaurantes")
-    print("3. Ativar restaurante")
-    print("4. Sair\n")
+    print(colored("1. ", "blue") + colored("Cadastrar restaurante", "cyan"))
+    print(colored("2. ", "blue") + colored("Listar restaurantes", "cyan"))
+    print(colored("3. ", "blue") + colored("Ativar restaurante", "cyan"))
+    print(colored("4. ", "blue") + colored("Sair\n", "cyan"))
 
 def finalizar_app():
     os.system("cls")
-    print("Finalizando o app\n")
+    print(colored("Finalizando o app\n", "green"))
 
 def opcao_invalida():
-    print("Opção inválida!\n")
-    input("Digite uma tecla para voltar ao menu principal: ")
+    print(colored("Opção inválida!\n", "red"))
+    input(colored("Digite uma tecla para voltar ao menu principal: ", "cyan"))
     main()
 
 def cadastrar_novo_restaurante():
     os.system("cls")
-    print("Cadastro de novos restaurantes\n")
+    print(colored("=-" * 15, "blue"))
+    print(colored("Cadastro de novos restaurantes", "cyan"))
+    print(colored("=-" * 15, "blue"))
 
-    nome_do_restaurante = input("Digite o nome do restaurante que deseja cadastrar: ")
+    nome_do_restaurante = input(colored("\n• Digite o nome do restaurante que deseja cadastrar: ", "cyan"))
     restaurantes.append(nome_do_restaurante)
 
-    print(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!\n")
-    input("Digite uma tecla para voltar ao menu principal: ")
+    print(colored(f"• O restaurante ", "cyan") + colored(nome_do_restaurante, "green") + colored(" foi cadastrado com sucesso!\n", "cyan"))
+    input(colored("Digite uma tecla para voltar ao menu principal: ", "cyan"))
     main()
 
 def escolher_opcao():
     try:
-        opcao_escolhida = int(input("Escolha uma opção: "))
+        opcao_escolhida = int(input(colored("Escolha uma opção: ", "cyan")))
 
         if opcao_escolhida == 1:
             cadastrar_novo_restaurante()
