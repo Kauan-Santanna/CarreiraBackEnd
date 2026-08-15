@@ -1,16 +1,16 @@
 import os
 from termcolor import colored
 
-restaurantes = []
+restaurantes = ["Pizza", "Hamburguer"]
 
 def exibir_nome_do_programa():
     print(colored("""
- ██████╗ █████╗ ██████╗  █████╗ ██████╗   ███████╗██╗  ██╗██████╗ ██████╗ ███████╗ ██████╗ ██████╗
-██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗  ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
-╚█████╗ ███████║██████╦╝██║  ██║██████╔╝  █████╗   ╚███╔╝ ██████╔╝██████╔╝█████╗  ╚█████╗ ╚█████╗ 
- ╚═══██╗██╔══██║██╔══██╗██║  ██║██╔══██╗  ██╔══╝   ██╔██╗ ██╔═══╝ ██╔══██╗██╔══╝   ╚═══██╗ ╚═══██╗
-██████╔╝██║  ██║██████╦╝╚█████╔╝██║  ██║  ███████╗██╔╝╚██╗██║     ██║  ██║███████╗██████╔╝██████╔╝
-╚═════╝ ╚═╝  ╚═╝╚═════╝  ╚════╝ ╚═╝  ╚═╝  ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝╚═════╝ ╚═════╝ 
+ ██████╗ █████╗ ██████╗  █████╗ ██████╗   ███████╗██╗  ██╗██████╗ ██████╗ ███████╗ ██████╗ ██████╗
+██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗  ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
+╚█████╗ ███████║██████╦╝██║  ██║██████╔╝  █████╗   ╚███╔╝ ██████╔╝██████╔╝█████╗  ╚█████╗ ╚█████╗ 
+ ╚═══██╗██╔══██║██╔══██╗██║  ██║██╔══██╗  ██╔══╝   ██╔██╗ ██╔═══╝ ██╔══██╗██╔══╝   ╚═══██╗ ╚═══██╗
+██████╔╝██║  ██║██████╦╝╚█████╔╝██║  ██║  ███████╗██╔╝╚██╗██║     ██║  ██║███████╗██████╔╝██████╔╝
+╚═════╝ ╚═╝  ╚═╝╚═════╝  ╚════╝ ╚═╝  ╚═╝  ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝╚═════╝ ╚═════╝ 
 """, "cyan"))
 
 def exibir_opcoes():
@@ -41,6 +41,21 @@ def cadastrar_novo_restaurante():
     input(colored("Digite uma tecla para voltar ao menu principal: ", "cyan"))
     main()
 
+def listar_restaurantes():
+    os.system("cls")
+    print(colored("=-" * 15, "white"))
+    print(colored(f"{"Listando restaurantes":^30}", "green"))
+    print(colored("=-" * 15, "white"))
+    print("")
+
+    for restaurante in restaurantes:
+        print(colored("• ", "white") + colored(restaurante, "green"))
+
+    print("")
+    print(colored("=-" * 15, "white"))
+    input(colored("\nPressione ENTER para voltar ao menu principal... ", "green"))
+    main()
+
 def escolher_opcao():
     try:
         opcao_escolhida = int(input(colored("Escolha uma opção: ", "cyan")))
@@ -48,7 +63,7 @@ def escolher_opcao():
         if opcao_escolhida == 1:
             cadastrar_novo_restaurante()
         elif opcao_escolhida == 2:
-            print("Listar restaurantes")
+            listar_restaurantes()
         elif opcao_escolhida == 3:
             print("Ativar restaurante")
         elif opcao_escolhida == 4:
@@ -65,4 +80,4 @@ def main():
     escolher_opcao()
 
 if __name__ == "__main__":
-    main()
+    main() 
