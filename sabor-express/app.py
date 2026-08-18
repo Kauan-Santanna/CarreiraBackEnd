@@ -1,7 +1,11 @@
 import os
 from termcolor import colored
 
-restaurantes = ["Pizza", "Hamburguer"]
+restaurantes = [
+    {"nome":"Pizza", "categoria":"Massa", "ativo":False}, 
+    {"nome":"Hamburguer", "categoria":"Fritas", "ativo":True},
+    {"nome":"Sushi", "categoria":"Japonesa", "ativo":True}
+]
 
 # ==============================
 # FUNÇÕES AUXILIARES
@@ -42,7 +46,10 @@ def listar_restaurantes():
     print("")
 
     for restaurante in restaurantes:
-        print(colored("• ", "white") + colored(restaurante, "yellow"))
+        nome_restaurante = restaurante["nome"]
+        categoria = restaurante["categoria"]
+        ativo = restaurante["ativo"]
+        print(colored("• ", "white") + colored(f"{nome_restaurante} - {categoria} - {ativo}", "yellow"))
 
     print("")
     exibir_separador(24)
