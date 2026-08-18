@@ -14,35 +14,38 @@ def voltar_ao_menu_principal():
 def limpar_tela():
     os.system("cls")
 
+def exibir_separador(tamanho=15):
+    print(colored("=-" * tamanho, "white"))
+
 # ==============================
 # FUNÇÕES DO SISTEMA
 # ==============================
 
 def cadastrar_novo_restaurante():
     limpar_tela()
-    print(colored("=-" * 15, "white"))
+    exibir_separador()
     print(colored("Cadastro de novos restaurantes", "yellow"))
-    print(colored("=-" * 15, "white"))
+    exibir_separador()
 
     nome_do_restaurante = input(colored("\n• Digite o nome do restaurante que deseja cadastrar: ", "yellow"))
     restaurantes.append(nome_do_restaurante)
     print(colored(f"• O restaurante ", "yellow") + colored(nome_do_restaurante, "green") + colored(" foi cadastrado com sucesso!\n", "yellow"))
 
-    print(colored("=-" * 24, "white"))
+    exibir_separador(24)
     voltar_ao_menu_principal()
 
 def listar_restaurantes():
     limpar_tela()
-    print(colored("=-" * 15, "white"))
+    exibir_separador()
     print(colored(f"{"Listando restaurantes":^30}", "yellow"))
-    print(colored("=-" * 15, "white"))
+    exibir_separador()
     print("")
 
     for restaurante in restaurantes:
         print(colored("• ", "white") + colored(restaurante, "yellow"))
 
     print("")
-    print(colored("=-" * 24, "white"))
+    exibir_separador(24)
     voltar_ao_menu_principal()
 
 def finalizar_app():
