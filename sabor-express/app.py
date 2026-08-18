@@ -32,7 +32,11 @@ def cadastrar_novo_restaurante():
     exibir_separador()
 
     nome_do_restaurante = input(colored("\n• Digite o nome do restaurante que deseja cadastrar: ", "yellow"))
-    restaurantes.append(nome_do_restaurante)
+    categoria = input(colored(f"• Digite o nome da categoria do restaurante ", "yellow") + colored(nome_do_restaurante, "white") + colored(": ", "yellow"))
+    dados_do_restaurante = {"nome":nome_do_restaurante,
+                            "categoria":categoria,
+                            "ativo":False}
+    restaurantes.append(dados_do_restaurante)
     print(colored(f"• O restaurante ", "yellow") + colored(nome_do_restaurante, "green") + colored(" foi cadastrado com sucesso!\n", "yellow"))
 
     exibir_separador(24)
@@ -49,7 +53,7 @@ def listar_restaurantes():
         nome_restaurante = restaurante["nome"]
         categoria = restaurante["categoria"]
         ativo = restaurante["ativo"]
-        print(colored("• ", "white") + colored(f"{nome_restaurante} - {categoria} - {ativo}", "yellow"))
+        print(colored("• ", "white") + colored(f"{nome_restaurante} | {categoria} | {ativo}", "yellow"))
 
     print("")
     exibir_separador(24)
