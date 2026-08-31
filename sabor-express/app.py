@@ -49,11 +49,12 @@ def listar_restaurantes():
     exibir_separador()
     print("")
 
+    print(colored(f"{"Restaurante:".ljust(14)} | {"Categoria:".ljust(12)} | Status:", "white"))
     for restaurante in restaurantes:
         nome_restaurante = restaurante["nome"]
         categoria = restaurante["categoria"]
-        ativo = restaurante["ativo"]
-        print(colored("• ", "white") + colored(f"{nome_restaurante} | {categoria} | {ativo}", "yellow"))
+        ativo = "Ativado" if restaurante["ativo"] else "Desativado"
+        print(colored("• ", "white") + colored(f"{nome_restaurante.ljust(12)} | {categoria.ljust(12)} | {ativo}", "yellow"))
 
     print("")
     exibir_separador(24)
@@ -65,7 +66,7 @@ def alternar_estado_restaurante():
     print(colored("Alternando estado do restaurante", "yellow"))
     exibir_separador(16)
 
-    nome_restaurante = input("Digite o nome do restaurante que deseja alternar o estado: ")
+    nome_restaurante = input(colored("Digite o nome do restaurante que deseja alternar o estado: ", "yellow"))
     restaurante_encontrado = False
 
     for restaurante in restaurantes:
@@ -73,12 +74,19 @@ def alternar_estado_restaurante():
             restaurante_encontrado = True
             restaurante["ativo"] = not restaurante["ativo"]
 
-            mensagem = f"O restaurante {nome_restaurante} foi ativado com sucesso" if restaurante["ativo"] else f"O restaurante {nome_restaurante} foi desativado com sucesso"
+            mensagem = (
+            colored(f"O restaurante {nome_restaurante} ", "yellow")
+            + colored("foi ativado com sucesso", "green") 
+            if restaurante["ativo"] 
+            else
+            colored(f"O restaurante {nome_restaurante} ", "yellow") 
+            + colored("foi desativado com sucesso", "red"))
             print(mensagem)
 
     if not restaurante_encontrado:
-        print("O restaurante não foi encontrado")
+        print(colored("O restaurante não foi encontrado", "red"))
 
+    exibir_separador(24)
     voltar_ao_menu_principal()
 
 def finalizar_app():
